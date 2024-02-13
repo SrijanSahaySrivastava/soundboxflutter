@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:soundbox2/views/QR.dart';
+import 'package:soundbox2/views/money.dart';
 
 class Scanner extends StatefulWidget {
   static const String Id = 'scanner_screen';
@@ -38,8 +39,8 @@ class _ScannerState extends State<Scanner> {
       ),
       body: MobileScanner(
         controller: MobileScannerController(
-          detectionSpeed: DetectionSpeed,
           returnImage: true,
+          detectionSpeed: DetectionSpeed.noDuplicates,
         ),
         onDetect: (capture) {
           final List<Barcode> barcodes = capture.barcodes;
@@ -48,16 +49,23 @@ class _ScannerState extends State<Scanner> {
             print('${Barcode.rawValue}');
           }
           if (image != null) {
-            showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text(barcodes.first.rawValue ?? ""),
-                    content: Image(
-                      image: MemoryImage(image),
-                    ),
-                  );
-                });
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    Money(value: barcodes.first.rawValue ?? ""),
+              ),
+            );
+            // showDialog(
+            //     context: context,
+            //     builder: (context) {
+            //       return AlertDialog(
+            //         title: Text(barcodes.first.rawValue ?? ""),
+            //         content: Image(
+            //           image: MemoryImage(image),
+            //         ),
+            //       );
+            //     });
           }
         },
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:soundbox2/views/QR.dart';
 import 'package:soundbox2/views/scanner.dart';
+import 'package:soundbox2/views/money.dart';
 
 void main() {
   runApp(const soundbox());
@@ -16,6 +17,7 @@ class soundbox extends StatelessWidget {
       routes: {
         Qr.Id: (context) => const Qr(),
         Scanner.Id: (context) => const Scanner(),
+        Money.Id: (context) => const Money(value: 'value')
       },
     );
   }
