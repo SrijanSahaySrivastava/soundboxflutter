@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Money extends StatefulWidget {
-  static const String Id = 'money_screen';
-  final String value;
+  static const String iD = 'money_screen';
+  final String walletAddress;
   const Money({
     Key? key,
-    required this.value,
+    required this.walletAddress,
   }) : super(key: key);
 
   @override
@@ -14,11 +14,15 @@ class Money extends StatefulWidget {
 
 class _MoneyState extends State<Money> {
   TextEditingController amountController = TextEditingController();
+  String selectedCurrency = "USD"; // Initialize with a default currency
+
+  final List<String> currencies = ["USD", "EUR", "INR", "GBP", "JPY"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Transfer Money"),
+        title: const Text("Transfer Money"),
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
@@ -26,48 +30,78 @@ class _MoneyState extends State<Money> {
             Icons.arrow_back_ios,
             color: Colors.black,
           ),
-          onPressed: () {
-            // TODO: TOP BACK BUTTON
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context), // Use clear arrow_back_ios
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Card(
           elevation: 8.0,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.all(50.0),
-                child: TextField(
-                  controller: amountController,
-                  keyboardType:
-                      const TextInputType.numberWithOptions(decimal: true),
-                  decoration: const InputDecoration(
-                    labelText: "Enter Amount",
-                    hintText: "0.00",
-                  ),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 30.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      flex: 3, // Give more space to the amount field
+                      child: TextField(
+                        controller: amountController,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
+                        decoration: InputDecoration(
+                          labelText: "Enter Amount",
+                          hintText: "0.00",
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 10.0),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10.0),
+                    Expanded(
+                      flex: 1, // Adjust width as needed
+                      child: DropdownButtonFormField<String>(
+                        value: selectedCurrency,
+                        icon: const Icon(Icons.keyboard_arrow_down),
+                        items: currencies.map((String currency) {
+                          return DropdownMenuItem<String>(
+                            value: currency,
+                            child: Text(currency),
+                          );
+                        }).toList(),
+                        onChanged: (value) =>
+                            setState(() => selectedCurrency = value!),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  // Get the entered amount
-                  double amount = double.parse(amountController.text);
-
-                  // TODO: Perform your transfer logic here using the amount
-
-                  // Show a confirmation message
+                  // Handle transfer logic with selected currency
+                  // ... your code here ...
+                  final amount = double.parse(amountController.text);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(
-                        "Transferring ₹$amount...",
-                      ),
+                      content:
+                          Text("Transferring $amount $selectedCurrency..."),
                     ),
                   );
                 },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
                 child: const Text("Transfer"),
               ),
             ],

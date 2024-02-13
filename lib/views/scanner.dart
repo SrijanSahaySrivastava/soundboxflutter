@@ -6,7 +6,7 @@ import 'package:soundbox2/views/QR.dart';
 import 'package:soundbox2/views/money.dart';
 
 class Scanner extends StatefulWidget {
-  static const String Id = 'scanner_screen';
+  static const String iD = 'scanner_screen';
 
   const Scanner({super.key});
 
@@ -53,7 +53,7 @@ class _ScannerState extends State<Scanner> {
               context,
               MaterialPageRoute(
                 builder: (context) =>
-                    Money(value: barcodes.first.rawValue ?? ""),
+                    Money(walletAddress: barcodes.first.rawValue ?? ""),
               ),
             );
             // showDialog(

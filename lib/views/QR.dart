@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class Qr extends StatefulWidget {
-  static const String Id = 'qr_screen';
+  static const String iD = 'qr_screen';
 
   const Qr({super.key});
 
