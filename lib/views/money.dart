@@ -48,20 +48,20 @@ class _MoneyState extends State<Money> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                        flex: 3, // Give more space to the amount field
-                        child: TextField(
-                          controller: amountController,
-                          keyboardType: const TextInputType.numberWithOptions(
-                              decimal: true),
-                          onChanged: (value) {
-                            //Do something with the user input.
-                          },
-                          decoration: ktextFieldDecoration.copyWith(
-                            labelText: "Enter Amount",
-                            hintText: "0.00",
-                          ),
+                      flex: 3, // Give more space to the amount field
+                      child: TextField(
+                        controller: amountController,
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
+                        onChanged: (value) {
+                          //Do something with the user input.
+                        },
+                        decoration: ktextFieldDecoration.copyWith(
+                          labelText: "Enter Amount",
+                          hintText: "0.00",
                         ),
-                        00),
+                      ),
+                    ),
                     const SizedBox(width: 10.0),
                     Expanded(
                       flex: 1, // Adjust width as needed
