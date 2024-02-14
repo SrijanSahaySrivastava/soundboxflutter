@@ -87,9 +87,12 @@ class _MoneyState extends State<Money> {
               const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  // Handle transfer logic with selected currency
+                  // TODO: Handle transfer logic with selected currency
+
                   // ... your code here ...
                   final amount = double.parse(amountController.text);
+                  print(amount);
+                  print(selectedCurrency);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content:
