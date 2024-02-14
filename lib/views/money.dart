@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:soundbox2/widget/constants.dart';
 
 class Money extends StatefulWidget {
   static const String iD = 'money_screen';
@@ -15,8 +16,6 @@ class Money extends StatefulWidget {
 class _MoneyState extends State<Money> {
   TextEditingController amountController = TextEditingController();
   String selectedCurrency = "USD"; // Initialize with a default currency
-
-  final List<String> currencies = ["USD", "EUR", "INR", "GBP", "JPY"];
 
   @override
   Widget build(BuildContext context) {
@@ -49,22 +48,20 @@ class _MoneyState extends State<Money> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      flex: 3, // Give more space to the amount field
-                      child: TextField(
-                        controller: amountController,
-                        keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true),
-                        decoration: InputDecoration(
-                          labelText: "Enter Amount",
-                          hintText: "0.00",
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 10.0),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                        flex: 3, // Give more space to the amount field
+                        child: TextField(
+                          controller: amountController,
+                          keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true),
+                          onChanged: (value) {
+                            //Do something with the user input.
+                          },
+                          decoration: ktextFieldDecoration.copyWith(
+                            labelText: "Enter Amount",
+                            hintText: "0.00",
                           ),
                         ),
-                      ),
-                    ),
+                        00),
                     const SizedBox(width: 10.0),
                     Expanded(
                       flex: 1, // Adjust width as needed

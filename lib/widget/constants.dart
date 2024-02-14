@@ -22,3 +22,5 @@ var ktextFieldDecoration = InputDecoration(
   hintText: '',
   hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
 );
+
+final List<String> currencies = ["USD", "EUR", "INR", "GBP", "JPY"];
