@@ -15,7 +15,7 @@ class soundbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: Money.iD,
+      initialRoute: LoginScreen.id,
       routes: {
         Qr.iD: (context) => const Qr(),
         Scanner.iD: (context) => const Scanner(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:soundbox2/widget/buttonWidget.dart';
 import 'package:soundbox2/widget/constants.dart';
 import 'package:sign_in_button/sign_in_button.dart';
+import 'scanner.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -109,7 +110,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 label: 'LOG IN',
                 colour: Colors.black,
                 onPressed: () {
-                  //Implement registration functionality.
+                  //TODO: Implement registration functionality.
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Scanner(),
+                    ),
+                  );
                 },
                 textstyle: TextStyle(
                   color: Colors.white,
